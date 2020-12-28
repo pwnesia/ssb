@@ -1,9 +1,9 @@
 package runner
 
 import (
-	"bufio"
 	"flag"
 	"fmt"
+	"io"
 	"os"
 	"time"
 
@@ -19,7 +19,7 @@ type Options struct {
 	timeout    time.Duration
 	output     string
 	port       int
-	list       *bufio.Scanner
+	list       io.ReadCloser
 	file       *os.File
 
 	user string

@@ -36,7 +36,7 @@ func (opt *Options) validate() error {
 		if err != nil {
 			return err
 		}
-		opt.list = bufio.NewScanner(f)
+		opt.list = f
 	} else {
 		return errors.New("No wordlist file provided")
 	}
@@ -49,4 +49,18 @@ func (opt *Options) validate() error {
 	}
 
 	return nil
+}
+
+func (opt *Options) listScanner() *bufio.Scanner {
+	return bufio.NewScanner(opt.list)
+}
+
+func (opt *Options) Close() {
+	if opt.list != nil {
+		_ = opt.list.Close()
+	}
+
+	if opt.file != nil {
+		_ = opt.file.Close()
+	}
 }
