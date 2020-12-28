@@ -1,13 +1,15 @@
 package runner
 
+import "time"
+
 var (
-  opt   *Options
-  uhost []string
+	opt   *Options
+	uhost []string
 )
 
 const (
-  version = "v0.0.1"
-  banner  = `
+	version = "v0.0.1"
+	banner  = `
              _
      ` + version + ` | |
      ___ ___| |__
@@ -19,7 +21,7 @@ Secure Shell Bruteforcer
   infosec@kitabisa.com
 
 `
-  usage = `Usage:
+	usage = `Usage:
   ssb [-p port] [-w wordlist.txt] [-t timeout]
       [-c concurrent] [-o output] [user@]hostname
 
@@ -41,5 +43,5 @@ Examples:
   ssb -w wordlist.txt -t 1m -c 1000 root@localhost
 
 `
-  timeout = "30s"
+	timeout = 30 * time.Second
 )

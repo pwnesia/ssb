@@ -21,9 +21,10 @@ func (opt *Options) validate() error {
 	if len(uhost) < 2 {
 		usr, err := user.Current()
 		if err != nil {
-			usr.Username = "root"
+			opt.user = "root"
+		} else {
+			opt.user = usr.Username
 		}
-		opt.user = usr.Username
 		opt.host = uhost[0]
 	} else {
 		opt.user = uhost[0]

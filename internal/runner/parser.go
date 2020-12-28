@@ -29,7 +29,7 @@ type Options struct {
 // Parse arguments
 func Parse() *Options {
 	opt = &Options{}
-	opt.timeout, _ = time.ParseDuration(timeout)
+	opt.timeout = timeout
 
 	flag.IntVar(&opt.port, "p", 22, "")
 	flag.IntVar(&opt.concurrent, "c", 100, "")
