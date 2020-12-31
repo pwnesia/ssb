@@ -1,5 +1,7 @@
 package runner
 
+import "time"
+
 var (
   opt   *Options
   uhost []string
@@ -41,5 +43,5 @@ Examples:
   ssb -w wordlist.txt -t 1m -c 1000 root@localhost
 
 `
-  timeout = "30s"
+  timeout = 30 * time.Second
 )

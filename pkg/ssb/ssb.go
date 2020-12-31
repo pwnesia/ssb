@@ -2,7 +2,6 @@ package ssb
 
 import (
 	"fmt"
-	"strconv"
 	"time"
 
 	"golang.org/x/crypto/ssh"
@@ -22,10 +21,10 @@ func New(username string, password string, timeout time.Duration) *ssh.ClientCon
 
 // Connect for dialing to SSH server
 func Connect(host string, port int, config *ssh.ClientConfig) (bool, error) {
-	_, err := ssh.Dial("tcp", fmt.Sprintf("%s:%s", host, strconv.Itoa(port)), config)
+	client, err := ssh.Dial("tcp", fmt.Sprintf("%s:%d", host, port), config)
 	if err != nil {
 		return false, err
 	}
-
+	_ = client.Close()
 	return true, nil
 }

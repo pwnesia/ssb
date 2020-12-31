@@ -1,9 +1,9 @@
 package runner
 
 import (
-	"bufio"
 	"flag"
 	"fmt"
+	"io"
 	"os"
 	"time"
 
@@ -19,7 +19,7 @@ type Options struct {
 	timeout    time.Duration
 	output     string
 	port       int
-	list       *bufio.Scanner
+	list       io.ReadCloser
 	file       *os.File
 
 	user string
@@ -29,7 +29,7 @@ type Options struct {
 // Parse arguments
 func Parse() *Options {
 	opt = &Options{}
-	opt.timeout, _ = time.ParseDuration(timeout)
+	opt.timeout = timeout
 
 	flag.IntVar(&opt.port, "p", 22, "")
 	flag.IntVar(&opt.concurrent, "c", 100, "")

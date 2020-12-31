@@ -15,6 +15,7 @@ import (
 func New(opt *Options) {
 	opt.showInfo()
 
+	defer opt.Close()
 	job := make(chan string)
 	cur := opt.concurrent
 	swg := sizedwaitgroup.New(cur)
@@ -29,8 +30,8 @@ func New(opt *Options) {
 		}()
 	}
 
-	for opt.list.Scan() {
-		job <- opt.list.Text()
+	for scanner := opt.listScanner(); scanner.Scan(); {
+		job <- scanner.Text()
 	}
 
 	close(job)
