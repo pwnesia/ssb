@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-yellowgreen)](https://github.com/kitabisa/ssb/blob/master/LICENSE)
 [![contributions](https://img.shields.io/badge/contributions-welcome-magenta.svg?style=flat)](https://github.com/kitabisa/ssb/issues)
 [![made with Go](https://img.shields.io/badge/made%20with-Go-brightgreen)](http://golang.org)
-[![Version](https://img.shields.io/badge/version-0.0.1-blueviolet)](https://github.com/kitabisa/ssb/releases)
+[![Version](https://img.shields.io/badge/version-0.0.2-blueviolet)](https://github.com/kitabisa/ssb/releases)
 
 **S**_ecure_ **S**_hell_ **B**_ruteforcer_ — A faster & simpler way to bruteforce SSH server.
 
