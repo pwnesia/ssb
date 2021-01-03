@@ -25,7 +25,11 @@ func New(opt *Options) {
 		go func() {
 			defer swg.Done()
 			for pass := range job {
-				opt.run(pass)
+				for i := 0; i < opt.retries; i++ {
+					if opt.run(pass) {
+						break
+					}
+				}
 			}
 		}()
 	}
@@ -39,7 +43,7 @@ func New(opt *Options) {
 	gologger.Infof("Done!")
 }
 
-func (opt *Options) run(password string) {
+func (opt *Options) run(password string) bool {
 	cfg := ssb.New(opt.user, password, opt.timeout)
 
 	con, err := ssb.Connect(opt.host, opt.port, cfg)
@@ -55,7 +59,11 @@ func (opt *Options) run(password string) {
 		if opt.file != nil {
 			fmt.Fprintf(opt.file, "%s\n", password)
 		}
+
+		vld = true
 	}
+
+	return vld
 }
 
 func (opt *Options) showInfo() {

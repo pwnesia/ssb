@@ -15,6 +15,7 @@ import (
 type Options struct {
 	concurrent int
 	wordlist   string
+	retries    int
 	verbose    bool
 	timeout    time.Duration
 	output     string
@@ -32,6 +33,7 @@ func Parse() *Options {
 	opt.timeout = timeout
 
 	flag.IntVar(&opt.port, "p", 22, "")
+	flag.IntVar(&opt.retries, "r", 1, "")
 	flag.IntVar(&opt.concurrent, "c", 100, "")
 	flag.BoolVar(&opt.verbose, "v", false, "")
 	flag.StringVar(&opt.output, "o", "", "")

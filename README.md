@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-yellowgreen)](https://github.com/kitabisa/ssb/blob/master/LICENSE)
 [![contributions](https://img.shields.io/badge/contributions-welcome-magenta.svg?style=flat)](https://github.com/kitabisa/ssb/issues)
 [![made with Go](https://img.shields.io/badge/made%20with-Go-brightgreen)](http://golang.org)
-[![Version](https://img.shields.io/badge/version-0.0.2-blueviolet)](https://github.com/kitabisa/ssb/releases)
+[![Version](https://img.shields.io/badge/version-0.1.0-blueviolet)](https://github.com/kitabisa/ssb/releases)
 
 **S**_ecure_ **S**_hell_ **B**_ruteforcer_ — A faster & simpler way to bruteforce SSH server.
 
@@ -30,7 +30,7 @@ Need [go1.14+](https://golang.org/doc/install#download) compiler installed and c
 
 ```bash
 ▶ ssb [-p port] [-w wordlist.txt] [-t timeout]
-      [-c concurrent] [-o output] [user@]hostname
+      [-c concurrent] [-r retries] [-o output] [user@]hostname
 ```
 
 ### Options:
@@ -44,6 +44,8 @@ Need [go1.14+](https://golang.org/doc/install#download) compiler installed and c
      Connection timeout (default 30s).
   -c concurrent
      Concurrency/threads level (default 100).
+  -r retries
+     Specify the connection retries (default 1).
   -o output
      Save valid password to file.
   -v

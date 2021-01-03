@@ -5,10 +5,11 @@ import "time"
 var (
   opt   *Options
   uhost []string
+  vld   bool
 )
 
 const (
-  version = "v0.0.2"
+  version = "v0.1.0"
   banner  = `
              _
      ` + version + ` | |
@@ -34,6 +35,8 @@ Options:
      Connection timeout (default 30s).
   -c concurrent
      Concurrency/threads level (default 100).
+  -r retries
+     Specify the connection retries (default 1).
   -o output
      Save valid password to file.
   -v
